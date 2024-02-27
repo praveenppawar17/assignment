@@ -1,0 +1,56 @@
+service: aws-node-http-api-project
+frameworkVersion: '3'
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  environment:
+    DYNAMODB_TABLE: HashedUrlsTable
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "dynamodb:PutItem"
+        - "dynamodb:GetItem"
+        - "dynamodb:Scan*"
+        - "dynamodb:UpdateItem"
+        - "dynamodb:DeleteItem"
+      Resource: "arn:aws:dynamodb:${aws:region}:${aws:accountId}:table/HashedUrlsTable"
+  logs:
+    restApi: true
+
+functions:
+  generateHash:
+    handler: index.generateHash
+    timeout: 30
+    events:
+      - httpApi:
+          path: /createhash
+          method: post
+
+  redirect:
+    handler: index.redirect
+    events:
+      - httpApi:
+          path: /redirect/{hash}
+          method: get
+
+
+resources:
+  Resources:
+    HashedUrlsTable:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        TableName: HashedUrlsTable
+        AttributeDefinitions:
+          - AttributeName: hash
+            AttributeType: S
+        KeySchema:
+          - AttributeName: hash
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 5
+          WriteCapacityUnits: 5
+
