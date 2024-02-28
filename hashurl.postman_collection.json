@@ -1,0 +1,64 @@
+{
+	"info": {
+		"_postman_id": "8cf08260-9114-46e2-9aa7-79a88dcf5760",
+		"name": "hashurl",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1781386"
+	},
+	"item": [
+		{
+			"name": "createhash",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"url\": \"https://www.youtube.com/watch?v=diji6JMYKdo\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://jzhfyvlqlb.execute-api.us-east-1.amazonaws.com/createhash",
+					"protocol": "https",
+					"host": [
+						"jzhfyvlqlb",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"createhash"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "paste this in tab",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://jzhfyvlqlb.execute-api.us-east-1.amazonaws.com/redirect/DWZ0dl5",
+					"protocol": "https",
+					"host": [
+						"jzhfyvlqlb",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"redirect",
+						"DWZ0dl5"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
