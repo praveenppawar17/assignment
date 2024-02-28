@@ -11,3 +11,5 @@ body - {
   "url": "https://www.youtube.com/watch?v=diji6JMYKdo"
 }
 get - https://jzhfyvlqlb.execute-api.us-east-1.amazonaws.com/redirect/{hash}
+
+Please refer postman collection
